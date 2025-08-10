@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Responsive Auto-Play Carousel</title>
+  <title>Responsive Continuous Carousel</title>
   <link
     rel="stylesheet"
     href="https://unpkg.com/flickity@2/dist/flickity.min.css"
@@ -16,15 +16,22 @@
     }
     /* Make slides scale proportionally */
     .carousel-cell {
-      width: 100%;                /* Full width of carousel */
-      aspect-ratio: 16 / 9;       /* Keep images proportional */
+      width: 70%;                /* Show part of next/prev slides */
+      aspect-ratio: 16 / 9;      
       margin-right: 10px;
       background-size: cover;
       background-position: center;
+      border-radius: 8px;
     }
-    /* For very small screens, adjust aspect ratio */
-    @media (max-width: 600px) {
+    /* Smaller screens: adjust so more slides are visible */
+    @media (max-width: 768px) {
       .carousel-cell {
+        width: 80%;
+      }
+    }
+    @media (max-width: 480px) {
+      .carousel-cell {
+        width: 90%;
         aspect-ratio: 4 / 3;
       }
     }
@@ -39,7 +46,8 @@
     "autoPlay": 3000,
     "pauseAutoPlayOnHover": false,
     "fullscreen": true,
-    "imagesLoaded": true
+    "imagesLoaded": true,
+    "groupCells": true
   }'>
   <div class="carousel-cell" style="background-image:url('https://caprikon.education/wp-content/uploads/2021/12/Copy-of-DSC_0009-2048x1365.jpg');"></div>
   <div class="carousel-cell" style="background-image:url('https://caprikon.education/wp-content/uploads/2022/01/ICE-05229-2048x1365.jpg');"></div>
