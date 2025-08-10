@@ -2,8 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>My Carousel</title>
-  <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+  <title>Notion Auto-Play Carousel</title>
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/flickity@2/dist/flickity.min.css"
+  >
   <style>
     .carousel {
       background: #fff;
@@ -21,8 +24,14 @@
 </head>
 <body>
 
-<div class="carousel"
-     data-flickity='{ "wrapAround": true, "autoPlay": 3000, "fullscreen": true }'>
+<div
+  class="carousel"
+  data-flickity='{ 
+    "wrapAround": true,
+    "autoPlay": 3000,
+    "pauseAutoPlayOnHover": false,
+    "fullscreen": true
+  }'>
   <div class="carousel-cell" style="background-image:url('photo1.jpg');"></div>
   <div class="carousel-cell" style="background-image:url('photo2.jpg');"></div>
   <div class="carousel-cell" style="background-image:url('photo3.jpg');"></div>
