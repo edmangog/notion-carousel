@@ -2,23 +2,31 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Notion Auto-Play Carousel</title>
+  <title>Responsive Auto-Play Carousel</title>
   <link
     rel="stylesheet"
     href="https://unpkg.com/flickity@2/dist/flickity.min.css"
   >
   <style>
+    /* Ensure the carousel fits parent container */
     .carousel {
       background: #fff;
       margin: auto;
-      max-width: 800px;
+      max-width: 100%;
     }
+    /* Make slides scale proportionally */
     .carousel-cell {
-      width: 100%;
-      height: 500px;
+      width: 100%;                /* Full width of carousel */
+      aspect-ratio: 16 / 9;       /* Keep images proportional */
       margin-right: 10px;
       background-size: cover;
       background-position: center;
+    }
+    /* For very small screens, adjust aspect ratio */
+    @media (max-width: 600px) {
+      .carousel-cell {
+        aspect-ratio: 4 / 3;
+      }
     }
   </style>
 </head>
@@ -30,7 +38,8 @@
     "wrapAround": true,
     "autoPlay": 3000,
     "pauseAutoPlayOnHover": false,
-    "fullscreen": true
+    "fullscreen": true,
+    "imagesLoaded": true
   }'>
   <div class="carousel-cell" style="background-image:url('photo1.jpg');"></div>
   <div class="carousel-cell" style="background-image:url('photo2.jpg');"></div>
