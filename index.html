@@ -3,57 +3,56 @@
 <head>
   <meta charset="UTF-8">
   <title>Responsive Continuous Carousel</title>
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/flickity@2/dist/flickity.min.css"
-  >
+  <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
   <style>
-    /* Ensure the carousel fits parent container */
     .carousel {
       background: #fff;
       margin: auto;
       max-width: 100%;
     }
-    /* Make slides scale proportionally */
     .carousel-cell {
-      width: 70%;                /* Show part of next/prev slides */
-      aspect-ratio: 16 / 9;      
+      width: 70%;
+      aspect-ratio: 16 / 9;
       margin-right: 10px;
       background-size: cover;
       background-position: center;
       border-radius: 8px;
     }
-    /* Smaller screens: adjust so more slides are visible */
     @media (max-width: 768px) {
-      .carousel-cell {
-        width: 80%;
-      }
+      .carousel-cell { width: 80%; }
     }
     @media (max-width: 480px) {
-      .carousel-cell {
-        width: 90%;
-        aspect-ratio: 4 / 3;
-      }
+      .carousel-cell { width: 90%; aspect-ratio: 4 / 3; }
     }
   </style>
 </head>
 <body>
 
-<div
-  class="carousel"
-  data-flickity='{ 
-    "wrapAround": true,
-    "autoPlay": 3000,
-    "pauseAutoPlayOnHover": false,
-    "fullscreen": true,
-    "imagesLoaded": true,
-    "groupCells": true
-  }'>
-  <div class="carousel-cell" style="background-image:url('https://caprikon.education/wp-content/uploads/2021/12/Copy-of-DSC_0009-2048x1365.jpg');"></div>
-  <div class="carousel-cell" style="background-image:url('https://caprikon.education/wp-content/uploads/2022/01/ICE-05229-2048x1365.jpg');"></div>
-  <div class="carousel-cell" style="background-image:url('https://caprikon.education/wp-content/uploads/2022/01/ICE-04808-min-2048x1366.jpg');"></div>
-</div>
+<div class="carousel"></div>
 
 <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+<script>
+  const carousel = document.querySelector('.carousel');
+  const baseURL = 'https://edmangog.github.io/notion-carousel/images/';
+  
+  // Generate images 1000.png → 1035.png
+  for (let i = 1000; i <= 1035; i++) {
+    const cell = document.createElement('div');
+    cell.className = 'carousel-cell';
+    cell.style.backgroundImage = `url('${baseURL}${i}.png')`;
+    carousel.appendChild(cell);
+  }
+
+  // Initialize Flickity after adding cells
+  new Flickity(carousel, {
+    wrapAround: true,
+    autoPlay: 3000,
+    pauseAutoPlayOnHover: false,
+    fullscreen: true,
+    imagesLoaded: true,
+    groupCells: true
+  });
+</script>
+
 </body>
 </html>
