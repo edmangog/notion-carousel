@@ -35,13 +35,14 @@
   const carousel = document.querySelector('.carousel');
   const baseURL = 'https://edmangog.github.io/notion-carousel/images/';
   
-  // Generate images 1000.png → 1035.png
+  const skipList = [1002]; // files to skip
   for (let i = 1000; i <= 1035; i++) {
-    const cell = document.createElement('div');
-    cell.className = 'carousel-cell';
-    cell.style.backgroundImage = `url('${baseURL}${i}.png')`;
-    carousel.appendChild(cell);
-  }
+  if (skipList.includes(i)) continue;
+  const cell = document.createElement('div');
+  cell.className = 'carousel-cell';
+  cell.style.backgroundImage = `url('${baseURL}${i}.png')`;
+  carousel.appendChild(cell);
+}
 
   // Initialize Flickity after adding cells
   new Flickity(carousel, {
